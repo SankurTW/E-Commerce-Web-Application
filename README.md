@@ -26,7 +26,7 @@ A full-stack e-commerce platform built with modern web technologies, featuring a
 - **Data Validation**: Input validation and sanitization
 - **Error Handling**: Comprehensive error handling and logging
 
-## 🛠Technologies Used
+## Technologies Used
 
 ### Frontend
 - **HTML5** - Semantic markup and structure
@@ -129,7 +129,7 @@ ecommerce-web/
 - Order history tracking
 - Status updates
 
-## 🔐 Security Features
+## Security Features
 
 - **Password Hashing**: bcrypt for secure password storage
 - **JWT Authentication**: Token-based authentication
@@ -137,29 +137,13 @@ ecommerce-web/
 - **SQL Injection Prevention**: Parameterized queries
 - **XSS Protection**: Input sanitization
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 
 - **Code Splitting**: React lazy loading for optimal bundle size
 - **Image Optimization**: Compressed images with lazy loading
 - **Caching**: Browser caching for static assets
 - **Database Indexing**: Optimized database queries
 - **Responsive Images**: Different image sizes for different devices
-
-## 🧪 Testing
-
-```bash
-# Run backend tests
-npm run test:server
-
-# Run frontend tests
-npm run test:client
-
-# Run all tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-```
 
 **Sankur Kundu**
 - Email: sankur.kundu.tw@gmail.com
