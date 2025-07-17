@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSmart - E-Commerce Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-shopping-bag"></i> ShopSmart</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('products')">Products</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light me-3 position-relative" onclick="showCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
+                    
+                    <div id="auth-buttons">
+                        <button class="btn btn-outline-light me-2" onclick="showAuthModal('login')">Login</button>
+                        <button class="btn btn-light" onclick="showAuthModal('register')">Register</button>
+                    </div>
+                    
+                    <div id="user-info" class="d-none">
+                        <span class="text-light me-3">Welcome, <span id="username"></span>!</span>
+                        <button class="btn btn-outline-light" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home-section" class="hero-section">
+        <div class="container">
+            <h1 class="display-4 mb-4">Welcome to ShopSmart</h1>
+            <p class="lead mb-4">Discover amazing products at unbeatable prices</p>
+            <button class="btn btn-light btn-lg" onclick="showSection('products')">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products-section" class="py-5 d-none">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Products</h2>
+            
+            <!-- Search and Filter -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <input type="text" class="form-control search-bar" id="search-input" placeholder="Search products..." onkeyup="searchProducts()">
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" id="category-filter" onchange="filterProducts()">
+                        <option value="">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="books">Books</option>
+                        <option value="home">Home & Garden</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" class="loading-spinner">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Loading products...</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="row">
+                <!-- Products will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cart-modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-shopping-cart"></i> Shopping Cart</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div id="cart-total" class="text-end mt-3">
+                        <h5>Total: $<span id="total-amount">0.00</span></h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" onclick="checkout()" id="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="modal fade" id="auth-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="auth-modal-title">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="auth-form">
+                        <div class="mb-3" id="name-field" style="display: none;">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="auth-submit-btn">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <span id="auth-switch-text">Don't have an account?</span>
+                        <a href="#" id="auth-switch-link" onclick="switchAuthMode()">Register here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <!-- Alerts will be populated here -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ShopSmart</h5>
+                    <p>Your trusted e-commerce platform for all your shopping needs.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@shopsmart.com<br>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
