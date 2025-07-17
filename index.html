@@ -9,7 +9,6 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-shopping-bag"></i> ShopSmart</a>
@@ -48,7 +47,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home-section" class="hero-section">
         <div class="container">
             <h1 class="display-4 mb-4">Welcome to ShopSmart</h1>
@@ -57,12 +55,10 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products-section" class="py-5 d-none">
         <div class="container">
             <h2 class="text-center mb-5">Our Products</h2>
             
-            <!-- Search and Filter -->
             <div class="row mb-4">
                 <div class="col-md-6">
                     <input type="text" class="form-control search-bar" id="search-input" placeholder="Search products..." onkeyup="searchProducts()">
@@ -78,7 +74,6 @@
                 </div>
             </div>
 
-            <!-- Loading Spinner -->
             <div id="loading-spinner" class="loading-spinner">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -86,14 +81,12 @@
                 <p>Loading products...</p>
             </div>
 
-            <!-- Products Grid -->
             <div id="products-grid" class="row">
                 <!-- Products will be populated here -->
             </div>
         </div>
     </section>
 
-    <!-- Cart Modal -->
     <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -117,7 +110,6 @@
         </div>
     </div>
 
-    <!-- Authentication Modal -->
     <div class="modal fade" id="auth-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -150,12 +142,9 @@
         </div>
     </div>
 
-    <!-- Alert Container -->
     <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
-        <!-- Alerts will be populated here -->
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
