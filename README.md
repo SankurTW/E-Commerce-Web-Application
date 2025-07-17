@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Web Application
+# E-Commerce Web Application
 
 A full-stack e-commerce platform built with modern web technologies, featuring a complete product catalog, shopping cart functionality, and secure user authentication system.
 
@@ -19,14 +19,14 @@ A full-stack e-commerce platform built with modern web technologies, featuring a
 - **Search & Filter**: Advanced product search with multiple filter options
 - **User Dashboard**: Personal account management and order history
 
-### 🔧 Backend Features
+### Backend Features
 - **RESTful API**: Well-structured API endpoints for all operations
 - **Database Integration**: PostgreSQL for robust data management
 - **Authentication**: JWT-based secure authentication system
 - **Data Validation**: Input validation and sanitization
 - **Error Handling**: Comprehensive error handling and logging
 
-## 🛠️ Technologies Used
+## 🛠Technologies Used
 
 ### Frontend
 - **HTML5** - Semantic markup and structure
@@ -48,60 +48,6 @@ A full-stack e-commerce platform built with modern web technologies, featuring a
 - Node.js (v14 or higher)
 - PostgreSQL (v12 or higher)
 - npm or yarn package manager
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SankurTW/ecommerce-web.git
-   cd ecommerce-web
-   ```
-
-2. **Install dependencies**
-   ```bash
-   # Install backend dependencies
-   npm install
-   
-   # Install frontend dependencies
-   cd client
-   npm install
-   cd ..
-   ```
-
-3. **Database Setup**
-   ```bash
-   # Create PostgreSQL database
-   createdb ecommerce_db
-   
-   # Run database migrations
-   npm run db:migrate
-   
-   # Seed initial data (optional)
-   npm run db:seed
-   ```
-
-4. **Environment Configuration**
-   ```bash
-   # Create .env file in root directory
-   cp .env.example .env
-   
-   # Update environment variables
-   DATABASE_URL=postgresql://username:password@localhost:5432/ecommerce_db
-   JWT_SECRET=your_jwt_secret_key
-   PORT=5000
-   ```
-
-5. **Start the application**
-   ```bash
-   # Start backend server
-   npm run server
-   
-   # Start frontend (in new terminal)
-   npm run client
-   
-   # Or start both concurrently
-   npm run dev
-   ```
 
 ## Project Structure
 
